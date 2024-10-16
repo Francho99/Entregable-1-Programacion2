@@ -1,32 +1,80 @@
 package grantateti;
 
-import java.util.*;
-
 public class Jugador {
+    private static int cantAliases = 0;
+    private static String[] Aliases = new String[100];
     private String nombre;
     private String alias;
     private int edad;
     private boolean jugadaMagica;
     
-    Scanner in = new Scanner(System.in);
 
     public Jugador(String nombre, String alias, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.jugadaMagica = true;
-        
+        //Esto se puede resolver con un Set<>
         boolean esta = false;
-        for (String string:Juego.getAliases()) {
-            if(alias == string){esta = true;}
+        for (String a:Aliases){
+            if(a.equals(alias)){
+                esta = true;
+            }
         }
         if(!esta){
-        Juego.setAliases(alias);
-        this.alias = alias;}
-        else{
-            System.out.println("El alias ya esta registrado prueba otra vez");
-            this.alias = in.nextLine();
+            this.nombre = nombre;
+            this.alias = alias;
+            this.edad = edad;
+        }
+        if(esta){
+            //Crear metodo en interfaz que pide otro ingreso
         }
     }
+
+    public static int getCantAliases() {
+        return cantAliases;
+    }
+
+    public static void setCantAliases(int cantAliases) {
+        Jugador.cantAliases = cantAliases;
+    }
+
+    public static String[] getAliases() {
+        return Aliases;
+    }
+
+    public static void setAliases(String[] Aliases) {
+        Jugador.Aliases = Aliases;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isJugadaMagica() {
+        return jugadaMagica;
+    }
+
+    public void setJugadaMagica(boolean jugadaMagica) {
+        this.jugadaMagica = jugadaMagica;
+    }
+    
     
     
 }
