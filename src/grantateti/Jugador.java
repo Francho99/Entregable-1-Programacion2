@@ -7,25 +7,24 @@ public class Jugador {
     private String alias;
     private int edad;
     private boolean jugadaMagica;
-    
 
     public Jugador(String nombre, String alias, int edad) {
         //Esto se puede resolver con un Set<>
-        boolean esta = false;
-        for (String a:Aliases){
-            if(a.equals(alias)){
-                esta = true;
-            }
-        }
-        if(!esta){
             this.nombre = nombre;
             this.alias = alias;
             this.edad = edad;
-        }
-        if(esta){
-            //Crear metodo en interfaz que pide otro ingreso
-        }
+            Aliases[cantAliases] = alias;
+            cantAliases+=1;
     }
+        public static boolean verificarDuplicado(String aliasdup){
+          for (String a:Aliases){
+            if(a!= null && a.equals(aliasdup)){
+                return true;
+            }
+        }
+        return false;
+}
+      
 
     public static int getCantAliases() {
         return cantAliases;
@@ -78,3 +77,4 @@ public class Jugador {
     
     
 }
+

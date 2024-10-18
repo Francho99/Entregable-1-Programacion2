@@ -9,5 +9,9 @@ package interfaz;
  * @author Angie
  */
 public class Interfaz {
+       public static void main(String[] args) {
+            Menu menu = new Menu(); // nuevo objeto de la clase menu
+            menu.mostrarMenu(); //llama al metodo de mostrr el menu
+        }
     
 }
