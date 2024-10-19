@@ -1,17 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package interfaz;
 
-/**
- *
- * @author Angie
- */
+import grantateti.*;
+
+
 public class Interfaz {
-       public static void main(String[] args) {
-            Menu menu = new Menu(); // nuevo objeto de la clase menu
-            menu.mostrarMenu(); //llama al metodo de mostrr el menu
-        }
+    public static void main(String[] args) {
+//        Menu menu = new Menu(); // nuevo objeto de la clase menu
+//        menu.mostrarMenu(); //llama al metodo de mostrr el menu
+        Jugador j1 = new Jugador("Franco", "fran", 234);
+        Jugador j2 = new Jugador("Franco", "fran2", 234);
+        
     
+        Juego nuevo = new Juego(j1, j2);
+        nuevo.jugar();
+    }
+    
+    public void animacion(){
+    //Una animacion re piola
+    }
 }

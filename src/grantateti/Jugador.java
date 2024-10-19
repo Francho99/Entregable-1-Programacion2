@@ -5,6 +5,7 @@ public class Jugador {
     private static String[] Aliases = new String[100];
     private String nombre;
     private String alias;
+    private int puntaje = 0;
     private int edad;
     private boolean jugadaMagica;
 
@@ -16,16 +17,30 @@ public class Jugador {
             Aliases[cantAliases] = alias;
             cantAliases+=1;
     }
-        public static boolean verificarDuplicado(String aliasdup){
-          for (String a:Aliases){
-            if(a!= null && a.equals(aliasdup)){
-                return true;
-            }
+    //Verifica duplicado
+    public static boolean verificarDuplicado(String aliasdup){
+      for (String a:Aliases){
+        if(a!= null && a.equals(aliasdup)){
+            return true;
         }
-        return false;
-}
+    }
+    return false;
+    }
+    public void ganoPartida(){
+        this.puntaje = this.getPuntaje() + 1;
+    }
       
+      
+//Getters y setters
 
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+    
     public static int getCantAliases() {
         return cantAliases;
     }
@@ -73,8 +88,5 @@ public class Jugador {
     public void setJugadaMagica(boolean jugadaMagica) {
         this.jugadaMagica = jugadaMagica;
     }
-    
-    
-    
 }
 

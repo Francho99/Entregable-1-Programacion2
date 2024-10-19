@@ -1,6 +1,6 @@
 
 package interfaz;
-import grantateti.Jugador;  // Importar la clase Jugador desde el package grantateti
+import grantateti.*;  // Importar la clase Jugador desde el package grantateti
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -13,7 +13,6 @@ Terminar el programa.
 
  */
 public class Menu {
-    
       private ArrayList<Jugador> jugadores = new ArrayList<>();
     
       public void mostrarMenu() {
@@ -22,14 +21,14 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
  
             while (continuar) {
-                int opcion = scanner.nextInt();
-                scanner.nextLine();
                 System.out.println("\n--- Menú Principal ---");
                 System.out.println("1 - Registrar un jugador");
                 System.out.println("2 - Jugar al Gran Tateti entre dos personas");
                 System.out.println("3 - Jugar al Gran Tateti contra la computadora");
                 System.out.println("4 - Ver el ranking de jugadores");
                 System.out.println("5 - Salir");
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
 
                         if(opcion == 5){
                             continuar = false;
@@ -39,6 +38,7 @@ public class Menu {
                         //Jugar al Gran Tateti contra la computadora
                             }else if(opcion == 2){
                         //Jugar al Gran Tateti entre dos personas
+                       // if(Jugador.cantAlias > 2){ } else { sout tienen que haber almenos 2}
                             } else if(opcion == 1){
                                 System.out.println("Registrando un jugador...");
                                 
@@ -65,10 +65,7 @@ public class Menu {
                         System.out.println("Opción inválida. Inténtalo de nuevo.");
                         }
 }
-            }
-
-     
-      }
+}}
 
 
         

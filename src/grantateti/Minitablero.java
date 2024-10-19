@@ -3,7 +3,7 @@ package grantateti;
 
 public class Minitablero {
     private boolean terminado = false;
-    private Jugador ganador;
+    private char ganador;
     private char[][] tablero = new char[3][3];
 
     //Constructor
@@ -15,12 +15,44 @@ public class Minitablero {
             }
         }
     }
+    
+    public void terminado(){
+        boolean hayGanador = false;
+        //filas
+        for (int i = 0; i < 3; i++) {
+            if (this.tablero[i][0] != ' ' && this.tablero[i][0] == (this.tablero[i][1]) &&  this.tablero[i][0] == (this.tablero[i][2])) {
+                hayGanador = true;
+                this.setGanador(tablero[i][0]);
+            }
+        }
+        //columnas
+        for (int i = 0; i < 3; i++) {
+            if (this.tablero[0][i] != ' ' && this.tablero[0][i] == (this.tablero[1][i]) && this.tablero[0][i] == (this.tablero[2][i])) {
+                hayGanador = true;
+                this.setGanador(tablero[0][i]);
+            }
+        }
+        //diagonal principal
+        if (this.tablero[0][0] != ' ' && this.tablero[0][0] == (this.tablero[1][1]) && this.tablero[0][0] == (this.tablero[2][2])) {
+            hayGanador = true;
+            this.setGanador(tablero[0][0]);
+        }
+        //la otra diagonal
+        if (this.tablero[0][2] != ' ' && this.tablero[0][2] == (this.tablero[1][1]) && this.tablero[0][2] == (this.tablero[2][0])) {
+            hayGanador = true;
+            this.setGanador(tablero[0][2]);
+        }
+        if(hayGanador){this.setTerminado(true);}
+    }
+    
+    
+    
     //Getters y Setters
     public boolean isTerminado() {
         return terminado;
     }
 
-    public Jugador getGanador() {
+    public char getGanador() {
         return ganador;
     }
 
@@ -36,7 +68,7 @@ public class Minitablero {
         this.terminado = terminado;
     }
     
-    public void setGanador(Jugador ganador) {
+    public void setGanador(char ganador) {
         this.ganador = ganador;
     }
     
@@ -50,6 +82,7 @@ public class Minitablero {
                     tableroString.append(this.tablero[fil][col]);
                     if(col<2){tableroString.append("|");}
                 }
+                tableroString.append("+");
             }
         return tableroString.toString();
     }

@@ -1,8 +1,9 @@
 package grantateti;
 
+
 public class Juego {
     private static int cantAlias = 0;
-    private static String[] aliases = new String[100];
+    private static  String[] aliases = new String[100];
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -19,10 +20,11 @@ public class Juego {
     
     public void jugar(){
         while (!juegoTerminado) {            
-            //Mostrar Tablero
+            //Mostrar Tablero 
             //Jugada
             //Verificar
             //Cambiar turno
+            
         }
     }
     
