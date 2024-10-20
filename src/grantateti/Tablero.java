@@ -13,6 +13,7 @@ public class Tablero {
             }
         }
     }
+
     
     public void terminado(){
         boolean hayGanador = false;
@@ -41,6 +42,16 @@ public class Tablero {
             this.setGanador(tablero[0][2].getGanador());
         }
         if(hayGanador){this.setTerminado(true);}    
+    }
+
+    public void minitablero(int[] posicionAnt, int[] posicionAct, char ficha){
+        Minitablero[][] tablero = this.tablero;
+        Minitablero minitablero = tablero[posicionAnt[0]][posicionAnt[1]];
+        char[][] minitab = minitablero.getTablero();
+        minitab[posicionAct[0]][posicionAct[1]] = ficha;
+        minitablero.setTablero(minitab);
+        tablero[posicionAnt[0]][posicionAnt[1]] = minitablero;
+        this.setTablero(tablero);
     }
 
     public Minitablero[][] getTablero() {

@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package grantateti;
 
-/**
- *
- * @author Angie
- */
-public class Computadora {
+
+public class Computadora extends Jugador{
+   
+   public Computadora(){
+        super("Computadora", "pc", 0);
+   }
+
+   
     
 }

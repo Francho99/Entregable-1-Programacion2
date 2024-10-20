@@ -33,30 +33,37 @@ public class Menu {
                         if(opcion == 5){
                             continuar = false;
                             }else if(opcion == 4){
-                        //Ver el ranking de jugadores
+                                mostrarRanking();        
                             }else if(opcion == 3){
-                        //Jugar al Gran Tateti contra la computadora
+                                Computadora computadora = new Computadora();
+                                
                             }else if(opcion == 2){
                         //Jugar al Gran Tateti entre dos personas
-                       // if(Jugador.cantAlias > 2){ } else { sout tienen que haber almenos 2}
+                                if(Jugador.cantAlias > 2){ 
+                                    System.out.println("Tienen que elegirse al menos 2 jugadores");
+                                } 
+                                else{
+                                    //Que comiencen los juegos del hambre xd
+                                }
+                            
                             } else if(opcion == 1){
-                                System.out.println("Registrando un jugador...");
+                                System.out.println("Registrar nuevo jugador");
                                 
                                 System.out.print("Ingresa el nombre del jugador: ");
                                 String nombre = scanner.nextLine();
          
                                 System.out.print("Ingresa el alias del jugador: ");
                                 String alias = scanner.nextLine();
-
-                                
                                  
                                 if(!Jugador.verificarDuplicado(alias)){
                                     System.out.print("Ingresa la edad del jugador: ");
                                     int edad = scanner.nextInt();
                                     scanner.nextLine();
                                     Jugador nuevoJugador = new Jugador(nombre, alias, edad);
-                                     jugadores.add(nuevoJugador);
-                                     System.out.println("Jugador registrado exitosamente.");
+                                    Jugador.setCantAliases(Jugador.getCantAliases()+1);
+                                    Jugador.nuevoAlias(alias);
+                                    jugadores.add(nuevoJugador);
+                                    System.out.println("Jugador registrado exitosamente.");
                                 } else {
                                      System.out.println("No se pudo registrar el jugador. El alias ya está en uso.");
                                 }     
@@ -65,7 +72,24 @@ public class Menu {
                         System.out.println("Opción inválida. Inténtalo de nuevo.");
                         }
 }
-}}
+private void mostrarRanking() {
+    if (jugadores.isEmpty()){
+        System.out.println("No hay jugadores registrados");
+        return;
+    }
+    Collections.sort(jugadores, Comparator.comparingInt(jugador::getPuntaje).reversed());
+
+    System.out.println("\n--- Ranking de Jugadores ---");
+    for(Jugador jugador : jugadores){
+        
+        System.out.println(jugador.getAlias() + "-" + jugador.getPuntaje());
+    }
+
+
+}
+
+}
+}
 
 
         

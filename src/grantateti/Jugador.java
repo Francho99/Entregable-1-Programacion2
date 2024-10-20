@@ -14,10 +14,13 @@ public class Jugador {
             this.nombre = nombre;
             this.alias = alias;
             this.edad = edad;
-            Aliases[cantAliases] = alias;
-            cantAliases+=1;
     }
     //Verifica duplicado
+
+    public static void nuevoAlias(String alias){
+        Jugador.Aliases[cantAliases] = alias;
+    }
+
     public static boolean verificarDuplicado(String aliasdup){
       for (String a:Aliases){
         if(a!= null && a.equals(aliasdup)){
