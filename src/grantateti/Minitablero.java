@@ -72,18 +72,27 @@ public class Minitablero {
         this.ganador = ganador;
     }
     
-    
-    @Override
+        
+       @Override
     public String toString(){
         StringBuilder tableroString = new StringBuilder();
-        
+        String verde = "\u001B[32m";
+        String reset = "\u001B[0m";
         for (int fil = 0; fil < 3; fil++) {
                 for (int col = 0; col < 3; col++) {
                     tableroString.append(this.tablero[fil][col]);
-                    if(col<2){tableroString.append("|");}
+                   if(col<2){
+                        tableroString.append("|");
+                    }
+                
                 }
-                tableroString.append("+");
-            }
-        return tableroString.toString();
+                tableroString.append("\n");
+            
+        tableroString.append("-+-+-\n");
+        }
+       
+    return tableroString.toString();
     }
+    
+
 }

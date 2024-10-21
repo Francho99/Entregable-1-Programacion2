@@ -1,25 +1,56 @@
 package interfaz;
 
 import grantateti.*;
+import java.util.*;
 
 
 public class Interfaz {
+    public static ArrayList<Jugador> jugadores = new ArrayList<>();
+    /*
+    *Si bien declarar una variable como public static genera dificultades en el debugging por ser de scope global
+    *y poder modificarse desde otras clases sin acceder a un metodo, por razones de utilidad a nuestro programa decidimos utilizarla
+    */
+    Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
-//        Menu menu = new Menu(); // nuevo objeto de la clase menu
-//        menu.mostrarMenu(); //llama al metodo de mostrr el menu
-    Jugador j1 = new Jugador("Franco", "fran", 234);
-    Jugador j2 = new Jugador("Franco", "fran2", 234);
-    Juego nuevo = new Juego(j1, j2);
-    nuevo.jugar();
+        //int[] movimientoAnterior = new int[2];
+        Tablero tab = new Tablero();
+        System.out.print(tab);
 
 
-        
     }
 
     //"Metodo de prueba" Me ayuda a pensar ;) ... Cuando pienso
-   /*public void mostrarTablero(){
-        System.out.println(nuevoJuego.getTablero());
-        
-    }*/
+    public void mostrarTablero(){
+    ///Posibilidad de meter colores y mejorar la interfaz por consola
+        System.out.println(/*Instancia de granTateti.Juego.tablero */);
+    }
+
+    public int[] pedirEntrada(){
+        //Puede que tengamos que aplicar un while 
+        int[] ret = new int[2];
+        System.out.println("Ingrese su Jugada");
+        String jugada = in.nextLine();
+        if(jugada.length() == 1 && jugada.equals("M")){
+            //jugada magica
+        }
+        if(jugada.length() == 2 && GranTateti.verificarJugada(jugada)){
+            ret = GranTateti.posiciones(jugada);
+        }else{
+            System.out.println("La jugada no es valida ingrese otra");
+        }
+        return ret;
+    }
 
 }
+/*
+ * El jugador, luego de seleccionar en el menu que modo de juego quiere, se tiene que iniciar una instancia de Gran tateti dentro de interfaz
+ * y mediante la misma se tiene que manejar el estado de juego, 
+ * 
+ * 
+ * Juego 
+ * 
+ * 
+ * 
+*/
+

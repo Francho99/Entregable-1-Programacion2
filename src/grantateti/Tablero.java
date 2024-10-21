@@ -54,6 +54,7 @@ public class Tablero {
         this.setTablero(tablero);
     }
 
+
     public Minitablero[][] getTablero() {
         return tablero;
     }
@@ -78,19 +79,50 @@ public class Tablero {
         this.ganador = ganador;
     }
     
-    @Override
+   @Override
     public String toString(){
-        StringBuilder tableroString = new StringBuilder();
-        
-        for (int fil = 0; fil < 3; fil++) {
-                for (int col = 0; col < 3; col++) {
-                    tableroString.append(this.tablero[fil][col].toString()).append("\n");
-                }
-                tableroString.append("\n");
-        
-            }
+    String fondoVerde = "\u001B[42m";
+    String reset = "\u001B[0m"; // Restablecer color predeterminado
 
+        StringBuilder tableroString = new StringBuilder();
+            tableroString.append(fondoVerde).append("*******************").append(reset).append("\n");
+            for(int fil=0; fil < 3; fil++){
+                String[] filasTablero = new String[3];
+                
+
+                for(int fila = 0; fila < 3; fila++){
+                    StringBuilder filaTablero = new StringBuilder();
+
+                    for(int minicol = 0; minicol < 3; minicol++){
+                        String[] filminitablero = tablero[fil][minicol].toString().split("\n");
+                        filaTablero.append(filminitablero[fila]);
+                        if(minicol < 2){
+                            filaTablero.append(fondoVerde).append("*").append(reset);
+                        }
+                    }
+                    filasTablero[fila] = filaTablero.toString();
+                    
+                }
+                for(int i=0;i<3; i++){
+                    tableroString.append(fondoVerde).append("*").append(reset).append(filasTablero[i]).append(fondoVerde).append("*").append(reset).append("\n");
+                }
+                
+                tableroString.append(fondoVerde).append("*").append(reset).append("-+-+-").append(fondoVerde).append("*").append(reset).append("-+-+-").append(fondoVerde).append("*").append(reset).append("-+-+-").append(fondoVerde).append("*").append(reset).append("\n");
+
+                tableroString.append(fondoVerde).append("*").append(reset).append(" | | ").append(fondoVerde).append("*").append(reset).append(" | | ").append(fondoVerde).append("*").append(reset).append(" | | ").append(fondoVerde).append("*").append(reset).append("\n");
+            
+        
+                if (fil < 2) {  // Solo añadir el separador entre los tres minitableros completos
+                    tableroString.append(fondoVerde).append("*").append("******************").append(reset).append("\n");
+                }
+
+            }
+            tableroString.append(fondoVerde).append("*******************").append(reset).append("\n");
         return tableroString.toString();
     }
     
 }
+
+
+
+    

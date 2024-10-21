@@ -2,7 +2,6 @@
 package interfaz;
 import grantateti.*;  // Importar la clase Jugador desde el package grantateti
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
 Registrar un jugador.
@@ -13,9 +12,15 @@ Terminar el programa.
 
  */
 public class Menu {
-      private ArrayList<Jugador> jugadores = new ArrayList<>();
-    
-      public void mostrarMenu() {
+    //private ArrayList<Jugador> jugadores = new ArrayList<>();
+    //Este ArrayList funciona mejor en Interfaz porque es inmutable 
+      
+    public Menu() {
+    }
+
+
+
+    public void mostrarMenu() {
     
         boolean continuar = true;
         Scanner scanner = new Scanner(System.in);
@@ -33,18 +38,13 @@ public class Menu {
                         if(opcion == 5){
                             continuar = false;
                             }else if(opcion == 4){
-                                mostrarRanking();        
+                               // mostrarRanking();        
                             }else if(opcion == 3){
-                                Computadora computadora = new Computadora();
+                                //Computadora computadora = new Computadora();
                                 
                             }else if(opcion == 2){
                         //Jugar al Gran Tateti entre dos personas
-                                if(Jugador.cantAlias > 2){ 
-                                    System.out.println("Tienen que elegirse al menos 2 jugadores");
-                                } 
-                                else{
-                                    //Que comiencen los juegos del hambre xd
-                                }
+                                
                             
                             } else if(opcion == 1){
                                 System.out.println("Registrar nuevo jugador");
@@ -62,22 +62,22 @@ public class Menu {
                                     Jugador nuevoJugador = new Jugador(nombre, alias, edad);
                                     Jugador.setCantAliases(Jugador.getCantAliases()+1);
                                     Jugador.nuevoAlias(alias);
-                                    jugadores.add(nuevoJugador);
+                                    Interfaz.jugadores.add(nuevoJugador);
                                     System.out.println("Jugador registrado exitosamente.");
                                 } else {
                                      System.out.println("No se pudo registrar el jugador. El alias ya está en uso.");
                                 }     
                             }
-                        else if (opcion>5|| opcion<5){
+                        else if (opcion>5|| opcion<1){
                         System.out.println("Opción inválida. Inténtalo de nuevo.");
                         }
 }
-private void mostrarRanking() {
-    if (jugadores.isEmpty()){
+/*public void mostrarRanking() {
+    if (Interfaz.jugadores.isEmpty()){
         System.out.println("No hay jugadores registrados");
         return;
     }
-    Collections.sort(jugadores, Comparator.comparingInt(jugador::getPuntaje).reversed());
+    Interfaz.jugadores.sort(jugadores, Comparator.comparingInt(jugador::getPuntaje).reversed());
 
     System.out.println("\n--- Ranking de Jugadores ---");
     for(Jugador jugador : jugadores){
@@ -86,7 +86,7 @@ private void mostrarRanking() {
     }
 
 
-}
+}*/
 
 }
 }

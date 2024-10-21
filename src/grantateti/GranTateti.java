@@ -20,7 +20,7 @@ public class GranTateti {
     }
 
     //Verificamos que la jugada esta bien ingresada
-    public boolean verificarJugada(String posicion){
+    public static boolean verificarJugada(String posicion){
         boolean esValida = false;
         char p1 = posicion.charAt(0);
         char p2 = posicion.charAt(1);
@@ -30,7 +30,7 @@ public class GranTateti {
         return esValida;
     }
     //Transformamos la entrada "String" en un Array de posiciones
-    public int[] posiciones(String posicion){
+    public static int[] posiciones(String posicion){
         int pos1 = 0; int pos2 = 0;
         char p1 = posicion.charAt(0);
         char p2 = posicion.charAt(1);
@@ -45,9 +45,6 @@ public class GranTateti {
         int[] coord = {pos1, pos2};
         return coord;
     }
-
-
-
 
 
     //Getters y Setters

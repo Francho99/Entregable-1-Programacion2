@@ -4,6 +4,7 @@ package grantateti;
 public class Juego {
     private static int cantAlias = 0;
     private static  String[] aliases = new String[100];
+    private int[] movimientoAnterior = new int[2];
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -23,17 +24,11 @@ public class Juego {
             
             //Interfaz.mostrarTablero(); Esto es para imaginar el siguiente metodo jeje
             //Metodo para acceder al minitablero -- (Deberia tener variable con posiciones anteriores)
-            Tablero tab = this.getTablero();
-            int[] p1 = {1, 2};
-            int[] p2 = {2, 0};
-            tab.minitablero(p1, p2, ficha());
-            System.out.println(tab);
             cambiarTurno();
             this.juegoTerminado = true;
         }
     }
 
-   
     
     //Se asigna una ficha dependiendo que jugador esté en el turno
     public char ficha(){
@@ -47,14 +42,11 @@ public class Juego {
         }
         return ficha;
     }
+
+    public void ponerFicha(int[] pos1, int[] pos2){
+        this.tablero.minitablero(pos1, pos2, this.ficha());
+    }
     
-    //this.getTablero().Metodo para eso
-    //Se accede a un minitablero
-    //Voy a pasar este metodo a Tablero posiblemente
-    //public void minitableroActual(int[] posiciones){
-    //    Tablero tablero = this.getTablero();
-    //    Minitablero[][] tabloide = tablero.getTablero();
-    //}
 
     //Se pasa el turno al siguiente jugador
     public void cambiarTurno(){
